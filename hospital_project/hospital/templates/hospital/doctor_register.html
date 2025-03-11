@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration - Health Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f0f8ff, #e1bee7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .registration-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            width: 700px;
+            max-width: 95%;
+            text-align: left;
+        }
+        .heading {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #880e4f, #ad1457);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(136, 14, 79, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2 class="heading">Doctor Registration</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="id_name">Full Name *</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email *</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="id_phone">Phone Number *</label>
+                {{ form.phone }}
+            </div>
+            <div class="form-group">
+                <label for="id_specialization">Specialization *</label>
+                {{ form.specialization }}
+            </div>
+            <div class="form-group">
+                <label for="id_license_number">Medical License Number *</label>
+                {{ form.license_number }}
+            </div>
+            <div class="form-group">
+                <label for="id_aadhaar">Aadhaar Number *</label>
+                {{ form.aadhaar }}
+            </div>
+            <div class="form-group">
+                <label for="id_pan">PAN Number *</label>
+                {{ form.pan }}
+            </div>
+            <div class="form-group">
+                <label for="id_experience">Experience in Medical Industry (Years) *</label>
+                {{ form.experience }}
+            </div>
+            <div class="form-group">
+                <label for="id_current_hospital">Currently Working at *</label>
+                {{ form.current_hospital }}
+            </div>
+            <div class="form-group">
+                <label for="id_location">Location *</label>
+                {{ form.location }}
+            </div>
+            <div class="form-group">
+                <label for="id_password">Password *</label>
+                {{ form.password }}
+            </div>
+            <div class="form-group">
+                <label for="id_gender">Gender *</label>
+                {{ form.gender }}
+            </div>
+            <div class="form-group">
+                <label for="id_dob">Date of Birth *</label>
+                {{ form.dob }}
+            </div>
+            <div class="form-group">
+                <label for="id_qualification">Qualification *</label>
+                {{ form.qualification }}
+            </div>
+            <div class="form-group">
+                <label for="id_med_council_reg">Medical Council Registration Number *</label>
+                {{ form.med_council_reg }}
+            </div>
+            <div class="form-group">
+                <label for="id_clinic_hospital">Clinic/Hospital Name (if applicable)</label>
+                {{ form.clinic_hospital }}
+            </div>
+            <div class="form-group">
+                <label for="id_years_practice">Years of Practice *</label>
+                {{ form.years_practice }}
+            </div>
+            <div class="form-group">
+                <label for="id_consultation_fee">Consultation Fee (if applicable)</label>
+                {{ form.consultation_fee }}
+            </div>
+            <div class="form-group">
+                <label for="id_working_hours">Availability/Working Hours *</label>
+                {{ form.working_hours }}
+            </div>
+            <div class="form-group">
+                <label for="id_emergency_contact">Emergency Contact Number *</label>
+                {{ form.emergency_contact }}
+            </div>
+            <div class="form-group">
+                <label for="id_alternate_contact">Alternate Email or Phone Number</label>
+                {{ form.alternate_contact }}
+            </div>
+            <div class="form-group">
+                <label for="id_languages">Languages Spoken *</label>
+                {{ form.languages }}
+            </div>
+            <div class="form-group">
+                <label for="id_documents">Upload Documents for License Verification *</label>
+                {{ form.documents }}
+            </div>
+            <div class="form-group">
+                <label for="id_profile_photo">Upload Profile Photo (Optional)</label>
+                {{ form.profile_photo }}
+            </div>
+            <div class="form-group">
+                <label>
+                    {{ form.consent }}
+                    I agree to the terms & conditions *
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

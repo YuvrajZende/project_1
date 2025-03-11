@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Registration - Health Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f0f8ff, #e1bee7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .registration-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            width: 800px;
+            max-width: 95%;
+            text-align: left;
+        }
+        .heading {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #880e4f, #ad1457);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(136, 14, 79, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2 class="heading">Hospital Registration</h2>
+        
+        <!-- Django Form -->
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_hospital_name">Legal Name of Hospital *</label>
+                {{ form.hospital_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_operating_name">Operating Name (if different)</label>
+                {{ form.operating_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_hospital_type">Type of Hospital *</label>
+                {{ form.hospital_type }}
+            </div>
+            <div class="form-group">
+                <label for="id_registration_number">Registration Number (if applicable)</label>
+                {{ form.registration_number }}
+            </div>
+            <div class="form-group">
+                <label for="id_establishment_date">Date of Establishment *</label>
+                {{ form.establishment_date }}
+            </div>
+            <div class="form-group">
+                <label for="id_address">Hospital Address *</label>
+                {{ form.address }}
+            </div>
+            <div class="form-group">
+                <label for="id_contact_phone">Contact Phone Number *</label>
+                {{ form.contact_phone }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email Address *</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="id_website">Website (if applicable)</label>
+                {{ form.website }}
+            </div>
+            <div class="form-group">
+                <label for="id_accreditation_status">Is the hospital accredited? *</label>
+                {{ form.accreditation_status }}
+            </div>
+            <div class="form-group">
+                <label for="id_accrediting_body">Accrediting Body</label>
+                {{ form.accrediting_body }}
+            </div>
+            <div class="form-group">
+                <label for="id_emergency_services">Emergency Services Availability *</label>
+                {{ form.emergency_services }}
+            </div>
+            <div class="form-group">
+                <label for="id_operating_hours">Operating Hours *</label>
+                {{ form.operating_hours }}
+            </div>
+            <div class="form-group">
+                <label for="id_telemedicine">Telemedicine Services *</label>
+                {{ form.telemedicine }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_owner_name">Name of Owner(s)/Board of Directors *</label>
+                {{ form.owner_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_admin_name">Hospital Administrator/CEO *</label>
+                {{ form.admin_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_tax_id">Tax Identification Number (TIN) *</label>
+                {{ form.tax_id }}
+            </div>
+            <div class="form-group">
+                <label for="id_funding_type">Type of Funding *</label>
+                {{ form.funding_type }}
+            </div>
+            <div class="form-group">
+                <label for="id_license_number">Hospital License Number *</label>
+                {{ form.license_number }}
+            </div>
+
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

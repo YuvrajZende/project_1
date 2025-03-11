@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f0f8ff, #e1bee7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .registration-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            width: 700px;
+            max-width: 95%;
+            text-align: left;
+        }
+        .heading {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #880e4f, #ad1457);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(136, 14, 79, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2 class="heading">Patient Registration</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <h3>Personal Information</h3>
+            <div class="form-group">
+                <label for="id_full_name">Full Name *</label>
+                {{ form.full_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_age">Age *</label>
+                {{ form.age }}
+            </div>
+            <div class="form-group">
+                <label for="id_dob">Date of Birth *</label>
+                {{ form.dob }}
+            </div>
+            <div class="form-group">
+                <label for="id_address">Address *</label>
+                {{ form.address }}
+            </div>
+            <div class="form-group">
+                <label for="id_city">City *</label>
+                {{ form.city }}
+            </div>
+            <div class="form-group">
+                <label for="id_state">State *</label>
+                {{ form.state }}
+            </div>
+            <div class="form-group">
+                <label for="id_pincode">Pincode *</label>
+                {{ form.pincode }}
+            </div>
+            <div class="form-group">
+                <label for="id_phone">Phone Number *</label>
+                {{ form.phone }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email *</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="id_marital_status">Marital Status *</label>
+                {{ form.marital_status }}
+            </div>
+            <div class="form-group">
+                <label for="id_blood_group">Blood Group *</label>
+                {{ form.blood_group }}
+            </div>
+
+            <h3>Emergency Contact</h3>
+            <div class="form-group">
+                <label for="id_emergency_name">Emergency Contact Name *</label>
+                {{ form.emergency_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_relationship">Relationship *</label>
+                {{ form.relationship }}
+            </div>
+            <div class="form-group">
+                <label for="id_emergency_phone">Emergency Phone *</label>
+                {{ form.emergency_phone }}
+            </div>
+
+            <h3>Medical History</h3>
+            <div class="form-group">
+                <label for="id_ongoing_medications">Any Ongoing Medications?</label>
+                {{ form.ongoing_medications }}
+            </div>
+            <div class="form-group">
+                <label for="id_medication_details">Medication Details</label>
+                {{ form.medication_details }}
+            </div>
+            <div class="form-group">
+                <label for="id_allergies">Any Allergies?</label>
+                {{ form.allergies }}
+            </div>
+            <div class="form-group">
+                <label for="id_allergy_details">Allergy Details</label>
+                {{ form.allergy_details }}
+            </div>
+            <div class="form-group">
+                <label for="id_family_history">Family Medical History</label>
+                {{ form.family_history }}
+            </div>
+
+            <h3>Insurance</h3>
+            <div class="form-group">
+                <label for="id_insurance">Do you have Insurance?</label>
+                {{ form.insurance }}
+            </div>
+            <div class="form-group">
+                <label for="id_insurance_provider">Insurance Provider</label>
+                {{ form.insurance_provider }}
+            </div>
+            <div class="form-group">
+                <label for="id_policy_number">Policy Number</label>
+                {{ form.policy_number }}
+            </div>
+            <div class="form-group">
+                <label for="id_coverage_details">Coverage Details</label>
+                {{ form.coverage_details }}
+            </div>
+
+            <h3>Dietary Preferences</h3>
+            <div class="form-group">
+                <label for="id_dietary_preference">Dietary Preference *</label>
+                {{ form.dietary_preference }}
+            </div>
+
+            <h3>Caste & Religion (Optional)</h3>
+            <div class="form-group">
+                <label for="id_caste">Caste</label>
+                {{ form.caste }}
+            </div>
+            <div class="form-group">
+                <label for="id_religion">Religion</label>
+                {{ form.religion }}
+            </div>
+
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Senior Intern Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f0f8ff, #e1bee7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .registration-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            width: 700px;
+            max-width: 95%;
+            text-align: left;
+        }
+        .heading {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #880e4f, #ad1457);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(136, 14, 79, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2 class="heading">Medical Senior Intern Registration</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h3>Basic Information</h3>
+            <div class="form-group">
+                <label for="id_name">Full Name *</label>
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email *</label>
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                <label for="id_phone">Phone Number *</label>
+                {{ form.phone }}
+            </div>
+            <div class="form-group">
+                <label for="id_aadhaar">Aadhaar Number *</label>
+                {{ form.aadhaar }}
+            </div>
+            <div class="form-group">
+                <label for="id_pan">PAN Number *</label>
+                {{ form.pan }}
+            </div>
+            <div class="form-group">
+                <label for="id_password">Password *</label>
+                {{ form.password }}
+            </div>
+
+            <h3>Academic & Professional Details</h3>
+            <div class="form-group">
+                <label for="id_qualification">Medical Degree/Qualification *</label>
+                {{ form.qualification }}
+            </div>
+            <div class="form-group">
+                <label for="id_graduation_year">Year of Graduation *</label>
+                {{ form.graduation_year }}
+            </div>
+            <div class="form-group">
+                <label for="id_university">Medical University *</label>
+                {{ form.university }}
+            </div>
+            <div class="form-group">
+                <label for="id_registration_number">Medical Council Registration Number</label>
+                {{ form.registration_number }}
+            </div>
+            <div class="form-group">
+                <label for="id_council_name">Medical Council Name</label>
+                {{ form.council_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_internship_hospital">Internship Hospital *</label>
+                {{ form.internship_hospital }}
+            </div>
+            <div class="form-group">
+                <label for="id_department">Department *</label>
+                {{ form.department }}
+            </div>
+
+            <h3>Work & Availability</h3>
+            <div class="form-group">
+                <label for="id_work_experience">Previous Work Experience</label>
+                {{ form.work_experience }}
+            </div>
+            <div class="form-group">
+                <label for="id_availability">Availability *</label>
+                {{ form.availability }}
+            </div>
+            <div class="form-group">
+                <label for="id_shift_preference">Shift Preference *</label>
+                {{ form.shift_preference }}
+            </div>
+
+            <h3>Personal Information</h3>
+            <div class="form-group">
+                <label for="id_dob">Date of Birth *</label>
+                {{ form.dob }}
+            </div>
+            <div class="form-group">
+                <label for="id_gender">Gender *</label>
+                {{ form.gender }}
+            </div>
+            <div class="form-group">
+                <label for="id_emergency_contact">Emergency Contact *</label>
+                {{ form.emergency_contact }}
+            </div>
+            <div class="form-group">
+                <label for="id_location">Location *</label>
+                {{ form.location }}
+            </div>
+
+            <h3>Documents</h3>
+            <div class="form-group">
+                <label for="id_resume">Upload Resume *</label>
+                {{ form.resume }}
+            </div>
+            <div class="form-group">
+                <label for="id_id_proof">Upload ID Proof *</label>
+                {{ form.id_proof }}
+            </div>
+
+            <div class="form-group">
+                <label>
+                    {{ form.consent }}
+                    I agree to the data privacy policy
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
