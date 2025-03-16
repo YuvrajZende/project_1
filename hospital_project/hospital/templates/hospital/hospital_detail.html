@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ hospital.name }} Details</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            cursor: pointer;
+            background: #f4f4f4;
+            transition: 0.3s;
+        }
+        .box:hover { background: #ddd; }
+    </style>
+</head>
+<body>
+    <h1>{{ hospital.name }}</h1>
+    <p>📍 {{ hospital.address }}</p>
+    <p>📞 {{ hospital.contact_phone }}</p>
+    <p>📧 {{ hospital.email }}</p>
+
+    <h2>Doctors</h2>
+    <div class="container">
+        {% for doctor in doctors %}
+            <div class="box" onclick="redirectToDoctor()"></div>
+
+                <script>
+                    function redirectToDoctor() {
+                        window.location.href = "{% url 'doctor_detail' doctor.id %}";
+                    }
+                </script>
+            
+                <h3>{{ doctor.name }}</h3>
+                <p>{{ doctor.specialization }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2>Interns</h2>
+    <div class="container">
+        {% for intern in interns %}
+            <div class="box">
+                <h3>{{ intern.name }}</h3>
+                <p>{{ intern.qualification }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'hospital_dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

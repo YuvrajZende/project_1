@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .hospital-box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            cursor: pointer;
+            background: #f4f4f4;
+            transition: 0.3s;
+        }
+        .hospital-box:hover { background: #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Hospital Dashboard</h1>
+    <div class="container">
+        {% for hospital in hospitals %}
+        <div class="hospital-box" onclick="redirectToHospital()">
+
+                <script>
+                    function redirectToHospital() {
+                        window.location.href = "{% url 'hospital_detail' hospital.id %}";
+                    }
+                </script>
+                <h3>{{ hospital.name }}</h3>
+                <p>{{ hospital.address }}</p>
+                <p>📞 {{ hospital.contact_phone }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

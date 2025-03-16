@@ -28,6 +28,11 @@ class Hospital(models.Model):
     funding_type = models.CharField(max_length=50, choices=[("Public", "Public"), ("Private", "Private"), ("Non-Profit", "Non-Profit")])
     license_number = models.CharField(max_length=100)
     
+    # Relationships
+    doctors = models.ManyToManyField("Doctor", related_name="hospitals", blank=True)
+    patients = models.ManyToManyField("Patient", related_name="hospitals", blank=True)
+    interns = models.ManyToManyField("Intern", related_name="hospitals", blank=True)
+
     def __str__(self):
         return self.hospital_name
 
@@ -65,6 +70,11 @@ class Doctor(models.Model):
     documents = models.FileField(upload_to='doctor_documents/', blank=True, null=True)
     profile_photo = models.ImageField(upload_to='doctor_photos/', blank=True, null=True)
     consent = models.BooleanField(default=False)
+    
+
+    patients = models.ManyToManyField("Patient", related_name="doctors", blank=True)
+    interns = models.ManyToManyField("Intern", related_name="mentors", blank=True)
+
 
     def __str__(self):
         return self.name
@@ -132,6 +142,8 @@ class Patient(models.Model):
     caste = models.CharField(max_length=100, blank=True, null=True)
     religion = models.CharField(max_length=100, blank=True, null=True)
 
+    #interns = models.ManyToManyField(Intern, related_name='patients')
+
     def __str__(self):
         return self.full_name
     
@@ -174,5 +186,21 @@ class Intern(models.Model):
     id_proof = models.FileField(upload_to='intern_id_proofs/')
     consent = models.BooleanField(default=False)
 
+    #patients = models.ManyToManyField('Patient', related_name='interns')
+    
     def __str__(self):
         return self.name
+
+# input from the user
+
+class MaternalMonitoring(models.Model):
+    hospital = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name="maternal_monitoring")
+    patient = models.ForeignKey('Patient', on_delete=models.CASCADE, related_name="maternal_monitoring")
+    blood_pressure = models.CharField(max_length=20)
+    heart_rate = models.CharField(max_length=20)
+    fetal_heart_rate = models.CharField(max_length=20)
+    temperature = models.CharField(max_length=10)
+    monitoring_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.patient.full_name} - {self.monitoring_date}"

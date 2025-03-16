@@ -1,5 +1,5 @@
 from django import forms
-from .models import Hospital,Doctor,Patient,Intern
+from .models import Hospital,Doctor,Patient,Intern , MaternalMonitoring
 
 class HospitalForm(forms.ModelForm):
     class Meta:
@@ -20,3 +20,8 @@ class InternForm(forms.ModelForm):
     class Meta:
         model = Intern
         fields = '__all__'
+        
+class MaternalMonitoringForm(forms.ModelForm):
+    class Meta:
+        model = MaternalMonitoring
+        fields = ['hospital', 'patient', 'blood_pressure', 'heart_rate', 'fetal_heart_rate', 'temperature']
